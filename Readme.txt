@@ -1,7 +1,7 @@
 The purpose of this script is to help users sleep through 13:00 without illness or going out.
 This script was tested in ubuntu 18.04 python 3.7 # 2020.2.15
 
-准备工作：
+Preparations:
 
 1. 准备python环境 并建立一个工作文件夹
 修改config.ini中的平台账号密码
