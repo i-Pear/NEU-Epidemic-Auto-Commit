@@ -1,6 +1,8 @@
 The purpose of this script is to help users sleep through 13:00 without illness or going out.
 This script was tested in ubuntu 18.04 python 3.7 # 2020.2.15
 
+# 注意：此脚本仅用于研究交流学习，使用请自行承担后果 #
+
 Preparations:
 
 1. 准备python环境 并建立一个工作文件夹
