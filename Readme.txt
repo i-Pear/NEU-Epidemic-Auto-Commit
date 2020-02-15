@@ -1,5 +1,5 @@
-本脚本的用途是帮助用户在没病也没出门的情况下睡过13:00
-本脚本在 ubuntu18.04 python3.7 环境下测试通过 2020.2.15
+The purpose of this script is to help users sleep through 13:00 without illness or going out.
+This script was tested in ubuntu 18.04 python 3.7 # 2020.2.15
 
 准备工作：
 
