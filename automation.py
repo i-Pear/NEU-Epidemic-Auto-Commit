@@ -82,6 +82,7 @@ if __name__ == '__main__':
 
     driver = webdriver.Chrome(chrome_options=chrome_options)
     print('\n' + '#' * 60)
+    print (time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
     print('Chrome driver loaded successfully.')
 
     print('Using stuID = ' + stuID + ' PWD = ' + platfromPassword + ' to login...')
