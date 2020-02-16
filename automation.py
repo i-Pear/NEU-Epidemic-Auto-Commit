@@ -13,6 +13,15 @@ from selenium.webdriver.support.ui import Select
 from selenium.webdriver.chrome.options import Options
 
 
+def check(x):
+    try:
+        if (x.find_element_by_xpath(
+                '//*[@id="app"]/section/section/section/section/main/div[1]/div[1]/div/div[2]/div/div/div/div[2]').text
+                == '东北大学学生防控信息统计系统'): return 0
+    except Exception as ex:
+        return 1
+
+
 def run():
     driver.get('http://stuinfo.neu.edu.cn/')
     time.sleep(2)
@@ -43,8 +52,7 @@ def run():
     driver.get('http://stuinfo.neu.edu.cn/#/studentPort/serveAdmin')
     WebDriverWait(driver, 60).until(lambda x: len(x.find_elements_by_xpath(
         '//*[@id="app"]/section/section/section/section/main/div[1]/div[1]/div/div[2]/div/div/div/div[2]')) > 0
-                                              and x.find_element_by_xpath(
-        '//*[@id="app"]/section/section/section/section/main/div[1]/div[1]/div/div[2]/div/div/div/div[2]').text == '东北大学学生防控信息统计系统')
+                                              and check(x) == 0)
     WebDriverWait(driver, 60).until(lambda x: len(x.find_elements_by_xpath(
         '//*[@id="app"]/section/section/section/section/main/div[1]/div[1]/div/div[2]/div/div/div')) > 0)
     time.sleep(2)
