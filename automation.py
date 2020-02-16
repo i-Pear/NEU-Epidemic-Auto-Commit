@@ -4,14 +4,13 @@
 Made by @i.Pear 2020/02/15
 """
 
+import os
 import time
+from config import stuID, platfromPassword
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.chrome.options import Options
-
-stuID = ""
-firstPassword = ""
 
 
 def run():
@@ -30,7 +29,7 @@ def run():
     in2 = driver.find_element_by_xpath('//*[@id="app"]/div/div[1]/div[3]/div[2]/div[2]/div/input')
     in2.click()
     in2.clear()
-    in2.send_keys(firstPassword)
+    in2.send_keys(platfromPassword)
     WebDriverWait(driver, 10).until(
         lambda x: len(x.find_elements_by_xpath('//*[@id="app"]/div/div[1]/div[3]/button')) > 0)
     driver.find_element_by_xpath('//*[@id="app"]/div/div[1]/div[3]/button').click()
@@ -75,12 +74,6 @@ def run():
 
 if __name__ == '__main__':
 
-    lines = []
-    with open("config.ini", encoding='UTF-8') as f:
-        for line in f: lines.append(line)
-    stuID = lines[1][:-1]
-    firstPassword = lines[3][:-1]
-
     chrome_options = Options()
     chrome_options.add_argument('--headless')
     chrome_options.add_argument('--disable-gpu')
@@ -91,7 +84,7 @@ if __name__ == '__main__':
     print('\n' + '#' * 60)
     print('Chrome driver loaded successfully.')
 
-    print('Using stuID = ' + stuID + ' PWD = ' + firstPassword + ' to login...')
+    print('Using stuID = ' + stuID + ' PWD = ' + platfromPassword + ' to login...')
     print('Starting operation...')
     run()
 

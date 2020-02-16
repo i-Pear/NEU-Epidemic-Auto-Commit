@@ -6,8 +6,8 @@ This script was tested in ubuntu 18.04 python 3.7 # 2020.2.15
 Preparations:
 
 1. 准备python环境 并建立一个工作文件夹
-修改config.ini中的平台账号密码
-将config.ini automation.py复制到服务器工作文件夹下
+修改config.py中的平台账号密码
+将config.py automation.py复制到服务器工作文件夹下
 
 2. 安装chrome
 wget -c https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
