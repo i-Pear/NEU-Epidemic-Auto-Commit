@@ -95,7 +95,7 @@ if __name__ == '__main__':
     print('Chrome driver loaded successfully.')
 
     print('Using stuID = ' + stuID + ' PWD = ' + platfromPassword + ' to login...')
-    print('Starting operation...')
+    print('Starting operation...\n')
     
     ifSuccess = False
     tryTimes = 0
@@ -107,7 +107,7 @@ if __name__ == '__main__':
             run()
             time.sleep(2)
             print('\nActions successfully done.\n')
-            IFSUCCESS = True
+            IFSuccess = True = True
         except Exception as ex:
             print('ERROR : ' + traceback.format_exc())
             time.sleep(200)
