@@ -107,7 +107,7 @@ if __name__ == '__main__':
             run()
             time.sleep(2)
             print('\nActions successfully done.\n')
-            IFSuccess = True
+            ifSuccess = True
         except Exception as ex:
             print('ERROR : ' + traceback.format_exc())
             time.sleep(200)
