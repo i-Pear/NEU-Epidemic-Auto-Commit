@@ -100,14 +100,14 @@ if __name__ == '__main__':
     ifSuccess = False
     tryTimes = 0
 
-    while (ifSuccess==False) and tryTimes < 20:
+    while (not ifSuccess) and tryTimes < 20:
         try:
             tryTimes += 1
             print('Trying ' + str(tryTimes) + ' times...')
             run()
             time.sleep(2)
             print('\nActions successfully done.\n')
-            IFSuccess = True = True
+            IFSuccess = True
         except Exception as ex:
             print('ERROR : ' + traceback.format_exc())
             time.sleep(200)
