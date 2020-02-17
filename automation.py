@@ -6,6 +6,7 @@ Made by @i.Pear 2020/02/15
 
 import os
 import time
+import traceback
 from config import stuID, platfromPassword
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
@@ -96,12 +97,20 @@ if __name__ == '__main__':
     print('Using stuID = ' + stuID + ' PWD = ' + platfromPassword + ' to login...')
     print('Starting operation...')
     
-    try:
-        run()
-        time.sleep(2)
-        print('\nActions successfully done.\n')
-    except Exception as ex:
-        print('ERROR : '+str(ex))
-    finally:
-        driver.quit()
+    ifSuccess = False
+    tryTimes = 0
+
+    while (ifSuccess==False) and tryTimes < 20:
+        try:
+            tryTimes += 1
+            print('Trying ' + str(tryTimes) + ' times...')
+            run()
+            time.sleep(2)
+            print('\nActions successfully done.\n')
+            IFSUCCESS = True
+        except Exception as ex:
+            print('ERROR : ' + traceback.format_exc())
+            time.sleep(200)
+
+    driver.quit()
 
