@@ -7,11 +7,20 @@ Made by @i.Pear 2020/02/15
 import os
 import time
 import traceback
+
 from config import stuID, platfromPassword
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.chrome.options import Options
+
+logText = ""
+
+
+def printLog(msg):
+    global logText
+    print(msg)
+    logText = logText + msg + '\n'
 
 
 def check(x):
@@ -46,7 +55,7 @@ def run():
     time.sleep(2)
     WebDriverWait(driver, 60).until(
         lambda x: len(x.find_elements_by_xpath('//*[ @id="app"]/section/aside/div/ul/li[2]')) > 0)
-    print('Platfrom logined successfully.')
+    printLog('Platfrom logined successfully.')
     # 平台登陆完成
 
     # 转向疫情页面
@@ -57,7 +66,7 @@ def run():
     WebDriverWait(driver, 60).until(lambda x: len(x.find_elements_by_xpath(
         '//*[@id="app"]/section/section/section/section/main/div[1]/div[1]/div/div[2]/div/div/div')) > 0)
     time.sleep(2)
-    print('Getting to the info site...')
+    printLog('Getting to the info site...')
     driver.find_element_by_xpath(
         '//*[@id="app"]/section/section/section/section/main/div[1]/div[1]/div/div[2]/div/div/div').click()
     time.sleep(2)
@@ -90,27 +99,27 @@ if __name__ == '__main__':
     chrome_options.add_argument("--no-sandbox")
 
     driver = webdriver.Chrome(chrome_options=chrome_options)
-    print('\n' + '#' * 60)
-    print (time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
-    print('Chrome driver loaded successfully.')
+    printLog('\n' + '#' * 60)
+    printLog(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
+    printLog('Chrome driver loaded successfully.')
 
-    print('Using stuID = ' + stuID + ' PWD = ' + platfromPassword + ' to login...')
-    print('Starting operation...\n')
-    
+    printLog('Using stuID = ' + stuID + ' PWD = ' + platfromPassword + ' to login...')
+    printLog('Starting operation...\n')
+
     ifSuccess = False
     tryTimes = 0
 
     while (not ifSuccess) and tryTimes < 20:
         try:
             tryTimes += 1
-            print('Trying ' + str(tryTimes) + ' times...')
+            printLog('Trying ' + str(tryTimes) + ' times...')
             run()
             time.sleep(2)
-            print('\nActions successfully done.\n')
+            printLog('\nActions successfully done.\n')
             ifSuccess = True
         except Exception as ex:
-            print('ERROR : ' + traceback.format_exc())
+            printLog('ERROR : ' + traceback.format_exc())
             time.sleep(200)
 
     driver.quit()
-
+    print(logText)
