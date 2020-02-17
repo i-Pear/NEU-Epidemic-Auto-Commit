@@ -95,9 +95,13 @@ if __name__ == '__main__':
 
     print('Using stuID = ' + stuID + ' PWD = ' + platfromPassword + ' to login...')
     print('Starting operation...')
-    run()
+    
+    try:
+        run()
+        time.sleep(2)
+        print('\nActions successfully done.\n')
+    except Exception as ex:
+        print('ERROR')
+    finally:
+        driver.quit()
 
-    time.sleep(2)
-
-    driver.close()
-    print('\nActions successfully done.\n')
