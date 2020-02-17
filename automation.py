@@ -101,7 +101,7 @@ if __name__ == '__main__':
         time.sleep(2)
         print('\nActions successfully done.\n')
     except Exception as ex:
-        print('ERROR')
+        print('ERROR : '+str(ex))
     finally:
         driver.quit()
 
