@@ -10,6 +10,7 @@ import traceback
 
 from config import stuID, platfromPassword
 from selenium import webdriver
+from mail import sendMail
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.chrome.options import Options
@@ -122,4 +123,8 @@ if __name__ == '__main__':
             time.sleep(200)
 
     driver.quit()
-    print(logText)
+
+    if ifSuccess:
+        sendMail(True, "")
+    else:
+        sendMail(False, logText)
