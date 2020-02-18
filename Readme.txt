@@ -7,6 +7,7 @@ Preparations:
 
 1. 准备python环境 并建立一个工作文件夹
 修改config.py中的平台账号密码
+修改mail.py中的邮箱信息
 将config.py automation.py复制到服务器工作文件夹下
 
 2. 安装chrome
