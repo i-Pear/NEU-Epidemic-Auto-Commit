@@ -80,9 +80,19 @@ def run():
     # 开始填写信息
     driver.switch_to.window(driver.window_handles[1])
     WebDriverWait(driver, 60).until(lambda x: len(x.find_elements_by_name('sfgcyiqz')) > 0)
-    box = driver.find_element_by_name('sfgcyiqz')
-    box = Select(box)
-    box.select_by_value('否')
+    Select(driver.find_element_by_name('sfgcyiqz')).select_by_value('否')
+    driver.find_element_by_name('hjnznl').send_keys('家')
+    driver.find_element_by_name('qgnl').send_keys('无')
+    Select(driver.find_element_by_name('sfqtdqlxs')).select_by_value('否')
+    Select(driver.find_element_by_name('sfjcgbr')).select_by_value('否')
+    Select(driver.find_element_by_name('sfjcglxsry')).select_by_value('否')
+    Select(driver.find_element_by_name('sfjcgysqzbr')).select_by_value('否')
+    Select(driver.find_element_by_name('sfjtcyjjfbqk')).select_by_value('否')
+    Select(driver.find_element_by_name('sfqgfrmz')).select_by_value('否')
+    Select(driver.find_element_by_name('sfygfr')).select_by_value('无')
+    Select(driver.find_element_by_name('sfyghxdbsy')).select_by_value('无')
+    Select(driver.find_element_by_name('sfygxhdbsy')).select_by_value('无')
+
 
     submit = driver.find_element_by_tag_name('button')
     submit.click()
