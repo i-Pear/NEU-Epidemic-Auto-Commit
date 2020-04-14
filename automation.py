@@ -77,10 +77,10 @@ def run():
 if __name__ == '__main__':
 
     chrome_options = Options()
-    #chrome_options.add_argument('--headless')
-    #chrome_options.add_argument('--disable-gpu')
+    chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--disable-gpu')
     chrome_options.add_argument("window-size=1024,768")
-    #chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--no-sandbox")
 
     driver = webdriver.Chrome(chrome_options=chrome_options)
     printLog('\n' + '#' * 60)
