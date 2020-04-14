@@ -1,7 +1,7 @@
 # coding:utf-8
 
 """
-Made by @i.Pear 2020/02/15
+Made by @i.Pear 2020/04/14
 """
 
 import os
@@ -24,90 +24,63 @@ def printLog(msg):
     logText = logText + msg + '\n'
 
 
-def check(x):
-    try:
-        if (x.find_element_by_xpath(
-                '//*[@id="app"]/section/section/section/section/main/div[1]/div[1]/div/div[2]/div/div/div/div[2]').text
-                == '东北大学学生防控信息统计系统'): return 0
-    except Exception as ex:
-        return 1
-
-
 def run():
-    driver.get('http://stuinfo.neu.edu.cn/')
-    time.sleep(2)
-    WebDriverWait(driver, 10).until(lambda x:
-                                    len(x.find_elements_by_xpath(
-                                        '//*[@id="app"]/div/div[1]/div[3]/div[2]/div[1]/input')) > 0)
-    in1 = driver.find_element_by_xpath('//*[@id="app"]/div/div[1]/div[3]/div[2]/div[1]/input')
+    driver.get('https://ehall.neu.edu.cn/infoplus/form/JKXXSB/start')
+    time.sleep(1)
+
+    WebDriverWait(driver, 10).until(lambda x: len(x.find_elements_by_xpath('//*[@id="un"]')) > 0)
+    in1 = driver.find_element_by_xpath('//*[@id="un"]')
     in1.click()
     in1.clear()
     in1.send_keys(stuID)
-    WebDriverWait(driver, 10).until(lambda x:
-                                    len(x.find_elements_by_xpath(
-                                        '//*[@id="app"]/div/div[1]/div[3]/div[2]/div[2]/div/input')) > 0)
-    in2 = driver.find_element_by_xpath('//*[@id="app"]/div/div[1]/div[3]/div[2]/div[2]/div/input')
+
+    WebDriverWait(driver, 10).until(lambda x: len(x.find_elements_by_xpath('//*[@id="pd"]')) > 0)
+    in2 = driver.find_element_by_xpath('//*[@id="pd"]')
     in2.click()
     in2.clear()
     in2.send_keys(platfromPassword)
-    WebDriverWait(driver, 10).until(
-        lambda x: len(x.find_elements_by_xpath('//*[@id="app"]/div/div[1]/div[3]/button')) > 0)
-    driver.find_element_by_xpath('//*[@id="app"]/div/div[1]/div[3]/button').click()
-    time.sleep(2)
-    WebDriverWait(driver, 60).until(
-        lambda x: len(x.find_elements_by_xpath('//*[ @id="app"]/section/aside/div/ul/li[2]')) > 0)
+
+    WebDriverWait(driver, 10).until(lambda x: len(x.find_elements_by_xpath('//*[@id="index_login_btn"]')) > 0)
+    driver.find_element_by_xpath('//*[@id="index_login_btn"]').click()
+    time.sleep(1)
+    WebDriverWait(driver, 60).until(lambda x: len(x.find_elements_by_xpath('//*[@id="app"]/main/div/form')) > 0)
     printLog('Platfrom logined successfully.')
     # 平台登陆完成
 
-    # 转向疫情页面
-    driver.get('http://stuinfo.neu.edu.cn/#/studentPort/serveAdmin')
-    WebDriverWait(driver, 60).until(lambda x: len(x.find_elements_by_xpath(
-        '//*[@id="app"]/section/section/section/section/main/div[1]/div[1]/div/div[2]/div/div/div/div[2]')) > 0
-                                              and check(x) == 0)
-    WebDriverWait(driver, 60).until(lambda x: len(x.find_elements_by_xpath(
-        '//*[@id="app"]/section/section/section/section/main/div[1]/div[1]/div/div[2]/div/div/div')) > 0)
-    time.sleep(2)
-    printLog('Getting to the info site...')
-    driver.find_element_by_xpath(
-        '//*[@id="app"]/section/section/section/section/main/div[1]/div[1]/div/div[2]/div/div/div').click()
-    time.sleep(2)
-    while len(driver.window_handles) == 1:
-        time.sleep(5)
-        driver.find_element_by_xpath(
-            '//*[@id="app"]/section/section/section/section/main/div[1]/div[1]/div/div[2]/div/div/div').click()
-        # 重定向完成
-
     # 开始填写信息
-    driver.switch_to.window(driver.window_handles[1])
-    WebDriverWait(driver, 60).until(lambda x: len(x.find_elements_by_name('sfgcyiqz')) > 0)
-    Select(driver.find_element_by_name('sfgcyiqz')).select_by_value('否')
-    driver.find_element_by_name('hjnznl').send_keys('家')
-    driver.find_element_by_name('qgnl').send_keys('无')
-    Select(driver.find_element_by_name('sfqtdqlxs')).select_by_value('否')
-    Select(driver.find_element_by_name('sfjcgbr')).select_by_value('否')
-    Select(driver.find_element_by_name('sfjcglxsry')).select_by_value('否')
-    Select(driver.find_element_by_name('sfjcgysqzbr')).select_by_value('否')
-    Select(driver.find_element_by_name('sfjtcyjjfbqk')).select_by_value('否')
-    Select(driver.find_element_by_name('sfqgfrmz')).select_by_value('否')
-    Select(driver.find_element_by_name('sfygfr')).select_by_value('无')
-    Select(driver.find_element_by_name('sfyghxdbsy')).select_by_value('无')
-    Select(driver.find_element_by_name('sfygxhdbsy')).select_by_value('无')
+    WebDriverWait(driver, 60).until(lambda x: len(
+        x.find_elements_by_xpath('//*[@id="app"]/main/div/form/div[1]/table/tbody/tr/td[1]/div/div/div/label[1]')) > 0)
+    driver.find_element_by_xpath(
+        '//*[@id="app"]/main/div/form/div[1]/table/tbody/tr/td[1]/div/div/div/label[1]').click()
 
+    WebDriverWait(driver, 60).until(lambda x: len(x.find_elements_by_xpath(
+        '//*[@id="app"]/main/div/form/div[3]/div[2]/table/tbody/tr[1]/td/div/div/div/label[1]')) > 0)
+    driver.find_element_by_xpath(
+        '//*[@id="app"]/main/div/form/div[3]/div[2]/table/tbody/tr[1]/td/div/div/div/label[1]').click()
 
-    submit = driver.find_element_by_tag_name('button')
-    submit.click()
-    time.sleep(2)
-    driver.switch_to.alert.accept()
+    WebDriverWait(driver, 60).until(lambda x: len(x.find_elements_by_xpath(
+        '//*[@id="app"]/main/div/form/div[4]/div[2]/table/tbody/tr[1]/td/div/div/div/label[1]')) > 0)
+    driver.find_element_by_xpath(
+        '//*[@id="app"]/main/div/form/div[4]/div[2]/table/tbody/tr[1]/td/div/div/div/label[1]').click()
+
+    time.sleep(1)
+    WebDriverWait(driver, 60).until(lambda x: len(x.find_elements_by_xpath(
+        '//*[@id="app"]/main/div/form/div[6]/button')) > 0)
+    driver.find_element_by_xpath('//*[@id="app"]/main/div/form/div[6]/button').click()
+
+    WebDriverWait(driver, 30).until(
+        lambda x: len(x.find_elements_by_xpath('//*[@id="app"]/main/div/div/div/div/div[2]/a[1]')) > 0)
+
     # 填写信息结束
 
 
 if __name__ == '__main__':
 
     chrome_options = Options()
-    chrome_options.add_argument('--headless')
-    chrome_options.add_argument('--disable-gpu')
+    #chrome_options.add_argument('--headless')
+    #chrome_options.add_argument('--disable-gpu')
     chrome_options.add_argument("window-size=1024,768")
-    chrome_options.add_argument("--no-sandbox")
+    #chrome_options.add_argument("--no-sandbox")
 
     driver = webdriver.Chrome(chrome_options=chrome_options)
     printLog('\n' + '#' * 60)
@@ -125,7 +98,7 @@ if __name__ == '__main__':
             tryTimes += 1
             printLog('Trying ' + str(tryTimes) + ' times...')
             run()
-            time.sleep(2)
+            time.sleep(1)
             printLog('\nActions successfully done.\n')
             ifSuccess = True
         except Exception as ex:

@@ -10,12 +10,12 @@ mailPort = 465
 # QQ邮箱的端口号
 
 
-mail_user = "12345678@qq.com"
+mail_user = "434317543@qq.com"
 # 用户名
-mail_pass = "dvdbhjfnvfabdgs"
+mail_pass = "xxxx"
 # 授权密码，非登录密码
 # 发送邮箱
-receivers = '12345678@qq.com'
+receivers = '434317543@qq.com'
 
 
 # 接收邮件，可设置为你的QQ邮箱或者其他邮箱
