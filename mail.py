@@ -40,11 +40,11 @@ def sendMail(ifok: bool, msg: str):
 
         message = MIMEText('打卡失败了，公主大人呜呜，快来查看情况呀!\n', 'plain', 'utf-8')
         # 正文
-        message['From'] = formataddr(['海螺姑娘', mail_user])
+        message['From'] = formataddr(['海螺姑娘', mail_user]) + msg
         # 发送者
         message['to'] = formataddr(['公主大人', receivers])
         # 接受者
-        message['Subject'] = '打卡失败\n' + msg
+        message['Subject'] = '打卡失败'
 
     print('邮件填写完毕')
 
