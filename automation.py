@@ -79,29 +79,35 @@ def run():
         "//input[@name='KeyRiskAreas' and @value='0']")) > 0)
     driver.find_element_by_xpath( "//input[@name='KeyRiskAreas' and @value='0']").click()
 
-    time.sleep(5)
     WebDriverWait(driver, 60).until(lambda x: len(x.find_elements_by_xpath(
         "//input[@name='HighRiskAreas' and @value='0']")) > 0)
     driver.find_element_by_xpath("//input[@name='HighRiskAreas' and @value='0']").click()
 
-    time.sleep(5)
     WebDriverWait(driver, 60).until(lambda x: len(x.find_elements_by_xpath(
         "//input[@name='ReachPeople' and @value='0']")) > 0)
     driver.find_element_by_xpath("//input[@name='ReachPeople' and @value='0']").click()
 
-
-    time.sleep(5)
     WebDriverWait(driver, 60).until(lambda x: len(x.find_elements_by_xpath(
         "//input[@name='HighRiskPeople' and @value='0']")) > 0)
     driver.find_element_by_xpath("//input[@name='HighRiskPeople' and @value='0']").click()
+    
+    WebDriverWait(driver, 60).until(lambda x: len(x.find_elements_by_xpath(
+        "//input[@name='field_5' and @value='0']")) > 0)
+    driver.find_element_by_xpath("//input[@name='field_5' and @value='0']").click()
+    
+    WebDriverWait(driver, 60).until(lambda x: len(x.find_elements_by_xpath(
+        "//input[@name='field_6' and @value='0']")) > 0)
+    driver.find_element_by_xpath("//input[@name='field_6' and @value='0']").click()
+    
+    WebDriverWait(driver, 60).until(lambda x: len(x.find_elements_by_xpath(
+        "//input[@name='field_7' and @value='0']")) > 0)
+    driver.find_element_by_xpath("//input[@name='field_7' and @value='0']").click()
 
-    time.sleep(5)
     WebDriverWait(driver, 60).until(lambda x: len(x.find_elements_by_xpath(
         '/html/body/div[2]/div/div[2]/form/button')) > 0)
     driver.find_element_by_xpath('/html/body/div[2]/div/div[2]/form/button').click()
 
 
-    time.sleep(2)
     time.sleep(5)
     driver.save_screenshot('1.png')
     time.sleep(5)
