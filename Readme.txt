@@ -24,6 +24,7 @@ chmod +x chromedriver
 sudo mv chromedriver /usr/bin/
 
 5. 测试脚本
-python automation.py
+python3 auto.py 1 // 晨检
+python3 auto-old.py // 除三次填报以外的每日打卡
 
 6.使用crontab等部署定时任务即可

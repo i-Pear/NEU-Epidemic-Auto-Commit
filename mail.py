@@ -10,12 +10,12 @@ mailPort = 465
 # QQ邮箱的端口号
 
 
-mail_user = "434317543@qq.com"
+mail_user = "123456@qq.com"
 # 用户名
-mail_pass = "xxxx"
+mail_pass = "123456"
 # 授权密码，非登录密码
 # 发送邮箱
-receivers = '434317543@qq.com'
+receivers = '123456@qq.com'
 
 
 # 接收邮件，可设置为你的QQ邮箱或者其他邮箱
@@ -38,9 +38,9 @@ def sendMail(ifok: bool, msg: str):
     else:
         # 发送邮件失败
 
-        message = MIMEText('打卡失败了，公主大人呜呜，快来查看情况呀!\n', 'plain', 'utf-8')
+        message = MIMEText('打卡失败了，公主大人呜呜，快来查看情况呀!\n'+msg, 'plain', 'utf-8')
         # 正文
-        message['From'] = formataddr(['海螺姑娘', mail_user]) + msg
+        message['From'] = formataddr(['海螺姑娘', mail_user])
         # 发送者
         message['to'] = formataddr(['公主大人', receivers])
         # 接受者
@@ -75,14 +75,13 @@ def sendMail(ifok: bool, msg: str):
     return ret
 
 
-'''
+
 if __name__ == '__main__':
     print('欢迎使用自动发送邮件系统')
     print('正在启动...')
-    ret = famail(True)
+    ret = sendMail(True,"test")
     if ret:
         print('发送成功')
     else:
         print('发送失败')
-    famail(False)
-'''
+    sendMail(False,"error msg")

@@ -71,43 +71,12 @@ def run():
     WebDriverWait(driver, 60).until(lambda x: len(x.find_elements_by_xpath(
         '//*[@id="app"]/main/div/form/div[6]/button')) > 0)
     driver.find_element_by_xpath('//*[@id="app"]/main/div/form/div[6]/button').click()
-
-
-    #new try
-    time.sleep(5)
-    WebDriverWait(driver, 60).until(lambda x: len(x.find_elements_by_xpath(
-        "//input[@name='KeyRiskAreas' and @value='0']")) > 0)
-    driver.find_element_by_xpath( "//input[@name='KeyRiskAreas' and @value='0']").click()
-
-    WebDriverWait(driver, 60).until(lambda x: len(x.find_elements_by_xpath(
-        "//input[@name='HighRiskAreas' and @value='0']")) > 0)
-    driver.find_element_by_xpath("//input[@name='HighRiskAreas' and @value='0']").click()
-
-    WebDriverWait(driver, 60).until(lambda x: len(x.find_elements_by_xpath(
-        "//input[@name='ReachPeople' and @value='0']")) > 0)
-    driver.find_element_by_xpath("//input[@name='ReachPeople' and @value='0']").click()
-
-    WebDriverWait(driver, 60).until(lambda x: len(x.find_elements_by_xpath(
-        "//input[@name='HighRiskPeople' and @value='0']")) > 0)
-    driver.find_element_by_xpath("//input[@name='HighRiskPeople' and @value='0']").click()
     
-    WebDriverWait(driver, 60).until(lambda x: len(x.find_elements_by_xpath(
-        "//input[@name='field_5' and @value='0']")) > 0)
-    driver.find_element_by_xpath("//input[@name='field_5' and @value='0']").click()
     
-    WebDriverWait(driver, 60).until(lambda x: len(x.find_elements_by_xpath(
-        "//input[@name='field_6' and @value='0']")) > 0)
-    driver.find_element_by_xpath("//input[@name='field_6' and @value='0']").click()
     
-    WebDriverWait(driver, 60).until(lambda x: len(x.find_elements_by_xpath(
-        "//input[@name='field_7' and @value='0']")) > 0)
-    driver.find_element_by_xpath("//input[@name='field_7' and @value='0']").click()
-
-    WebDriverWait(driver, 60).until(lambda x: len(x.find_elements_by_xpath(
-        '/html/body/div[2]/div/div[2]/form/button')) > 0)
-    driver.find_element_by_xpath('/html/body/div[2]/div/div[2]/form/button').click()
-
-
+    
+    
+    
     time.sleep(5)
     driver.save_screenshot('1.png')
     time.sleep(5)
@@ -115,9 +84,10 @@ def run():
     windows = driver.window_handles
     print('#debug: windows count=', len(windows))
     WebDriverWait(driver, 30).until(
-        lambda x: len(x.find_elements_by_xpath('/html/body/div[2]/h2')) > 0)
-    if driver.find_element_by_xpath('/html/body/div[2]/h2').text != "新冠肺炎疫情实时动态":
+        lambda x: len(x.find_elements_by_xpath('//*[@id="app"]/main/div/div/div/div/div[1]')) > 0)
+    if driver.find_element_by_xpath('//*[@id="app"]/main/div/div/div/div/div[1]').text != "上报成功":
         raise Exception("Unknown ERROR")
+    printLog(driver.find_element_by_xpath('//*[@id="app"]/main/div/div/div/div/div[1]').text)
     # 填写信息结束
 
 
