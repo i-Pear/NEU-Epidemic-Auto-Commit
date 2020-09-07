@@ -25,6 +25,14 @@ sudo mv chromedriver /usr/bin/
 
 5. 测试脚本
 python3 auto.py 1 // 晨检
+python3 auto.py 2 // 午检
+python3 auto.py 3 // 晚检
 python3 auto-old.py // 除三次填报以外的每日打卡
 
 6.使用crontab等部署定时任务即可
+示例：
+20 7 * * * python3 /root/sign/auto.py 1 > /root/sign/log.txt
+20 12 * * * python3 /root/sign/auto.py 2 > /root/sign/log.txt
+20 19 * * * python3 /root/sign/auto.py 3 > /root/sign/log.txt
+20 5 * * * python3 /root/sign/auto-old.py > /root/sign/log.txt
+
