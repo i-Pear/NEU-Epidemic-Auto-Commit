@@ -18,7 +18,7 @@ sudo dpkg -i google-chrome-stable_current_amd64.deb
 pip install selenium
 
 4. 安装chrome驱动程序
-wget -c https://cdn.npm.taobao.org/dist/chromedriver/80.0.3987.16/chromedriver_linux64.zip
+wget -c https://cdn.npm.taobao.org/dist/chromedriver/80.0.3987.16/chromedriver_linux64.zip (chrome版本号自行修改)
 unzip chromedriver_linux64.zip
 chmod +x chromedriver
 sudo mv chromedriver /usr/bin/
