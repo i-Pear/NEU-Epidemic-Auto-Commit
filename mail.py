@@ -21,6 +21,7 @@ receivers = '123456@qq.com'
 # 接收邮件，可设置为你的QQ邮箱或者其他邮箱
 
 def sendMail(ifok: bool, msg: str):
+    if ifok: return
     # 第三方 SMTP 服务
 
     # ifok为真发送成功邮件，失败发送失败邮件
