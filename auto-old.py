@@ -78,7 +78,6 @@ def run():
     
     
     time.sleep(5)
-    driver.save_screenshot('1.png')
     time.sleep(5)
 
     windows = driver.window_handles
