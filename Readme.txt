@@ -10,29 +10,21 @@ Preparations:
 修改mail.py中的邮箱信息
 将config.py automation.py mail.py复制到服务器工作文件夹下
 
-2. 安装chrome
-wget -c https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo dpkg -i google-chrome-stable_current_amd64.deb
+2. 安装chrome驱动程序+chrome
+sudo apt install chromium-chromedriver // 依赖chromium，会自动安装
 
 3. 安装selenium自动化工具
 pip install selenium
 
-4. 安装chrome驱动程序
-wget -c https://cdn.npm.taobao.org/dist/chromedriver/80.0.3987.16/chromedriver_linux64.zip (chrome版本号自行修改)
-unzip chromedriver_linux64.zip
-chmod +x chromedriver
-sudo mv chromedriver /usr/bin/
-
-5. 测试脚本
+4. 测试脚本
 python3 auto.py 1 // 晨检
 python3 auto.py 2 // 午检
 python3 auto.py 3 // 晚检
 python3 auto-old.py // 除三次填报以外的每日打卡
 
-6.使用crontab等部署定时任务即可
+5.使用crontab等部署定时任务即可
 示例：
 20 7 * * * python3 /root/sign/auto.py 1 > /root/sign/log.txt
 20 12 * * * python3 /root/sign/auto.py 2 > /root/sign/log.txt
 20 19 * * * python3 /root/sign/auto.py 3 > /root/sign/log.txt
 20 5 * * * python3 /root/sign/auto-old.py > /root/sign/log.txt
-
